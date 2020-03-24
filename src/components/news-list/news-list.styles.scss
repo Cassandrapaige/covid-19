@@ -12,4 +12,15 @@
     img {
         width: 100%;
     }
+
+    @media screen and (max-width: 400px) {
+
+        .content {
+            h2 {
+                font-size: 12px !important;
+                font-weight: 500;
+            }
+
+        }
+    }
 }
