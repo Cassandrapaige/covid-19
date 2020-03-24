@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
 import './news-page.styles.scss'
+import API_KEY from '../../base'
 
 import NewsList from '../../components/news-list/news-list.component'
 import Container from '../../components/container/container.component'
@@ -9,7 +10,7 @@ import Container from '../../components/container/container.component'
 const NewsPage = () => {
     const [count, setCount] = useState(20);
     const [url, setUrl] = useState(
-    `http://newsapi.org/v2/everything?q=covid&from=2020-03-24&sortBy=popularity&language=en&pageSize=${count}&apiKey=4792a2b1fc8446f094c1d461b6330502`);
+    `https://newsapi.org/v2/everything?q=covid&from=2020-03-24&sortBy=popularity&language=en&pageSize=${count}&apiKey=${API_KEY}`);
     const [data, setData] = useState([]);
   
     useEffect(() => {
@@ -21,7 +22,7 @@ const NewsPage = () => {
     
     const handleClick = () => {
         setCount(count + 20)
-        setUrl(`http://newsapi.org/v2/everything?q=covid&from=2020-03-24&sortBy=popularity&language=en&pageSize=${count + 20}&apiKey=4792a2b1fc8446f094c1d461b6330502`);
+        setUrl(`https://newsapi.org/v2/everything?q=covid&from=2020-03-24&sortBy=popularity&language=en&pageSize=${count + 20}&apiKey=${API_KEY}`);
     }
 
     const scrollToTop = () => {
