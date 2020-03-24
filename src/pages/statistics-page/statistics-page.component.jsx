@@ -5,16 +5,22 @@ import DataList from '../../components/data-list/data-list.component'
 import SearchFeature from '../../components/search-feature/search-feature.component'
 import Container from '../../components/container/container.component'
 import FilterMenu from '../../components/filter-menu/filter-menu.component'
+import Spinner from '../../components/spinner/spinner.component'
 
 const StatisticsPage = () => {
     const [data, setData] = useState([]);
     const [searchField, setSearchField] = useState('');
     const [isActive, setIsActive] = useState(false);
     const [showNav, setShowNav] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
   
     useEffect(() => {
+        setIsLoading(true);
       axios.get('https://coronavirus-19-api.herokuapp.com/countries')
-      .then(result => {setData(result.data)})
+      .then(result => {
+          setData(result.data);
+          setIsLoading(false);
+        })
       .catch(error => console.log(error))
     }, []);
 
@@ -51,9 +57,13 @@ const StatisticsPage = () => {
                     active = {isActive}
                     handleClick = {handleClick}
                     onClick = {filteredList}
-                    />
+                />
             </SearchFeature>
-            <DataList filteredData = {filteredData} />
+            {isLoading ?
+                <Spinner />
+                :
+                <DataList filteredData = {filteredData} />
+            }
         </Container>
     )
 }

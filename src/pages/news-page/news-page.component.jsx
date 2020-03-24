@@ -2,21 +2,27 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
 import './news-page.styles.scss'
-import API_KEY from '../../base'
+import {API_KEY} from '../../base'
 
 import NewsList from '../../components/news-list/news-list.component'
 import Container from '../../components/container/container.component'
+import Spinner from '../../components/spinner/spinner.component'
 
 const NewsPage = () => {
     const [count, setCount] = useState(20);
+    const [isLoading, setIsLoading] = useState(false);
     const [url, setUrl] = useState(
     `https://newsapi.org/v2/everything?q=covid&from=2020-03-24&sortBy=popularity&language=en&pageSize=${count}&apiKey=${API_KEY}`);
     const [data, setData] = useState([]);
   
     useEffect(() => {
-      axios.get(url)
-      .then(result => {setData(result.data.articles)})
-      .catch(error => console.log(error))
+        setIsLoading(true);
+        axios.get(url)
+        .then(result => {
+            setData(result.data.articles)
+            setIsLoading(false)
+            })
+        .catch(error => console.log(error))
     }, [url]);
 
     
@@ -32,10 +38,16 @@ const NewsPage = () => {
     return (
         <Container>
             <h2 className = 'title'>Latest News | Top 100</h2>
-            <NewsList data = {data} />
+            { isLoading ? 
+                <Spinner /> 
+                :
+
+                <NewsList data = {data} />
+            }
                 <button onClick = { count <= 80 ? handleClick : scrollToTop}> 
                     { count <= 80 ? 'See more' : 'Go to top' }
                 </button>
+
         </Container>
     )
 }
