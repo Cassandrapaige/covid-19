@@ -2,11 +2,13 @@ import React, {Fragment} from 'react'
 
 import './data-list.styles.scss'
 
+import ListContainer from '../list-container/list-container.component'
+
 const DataList = ({ filteredData }) => {
     return (
     <Fragment>
         {filteredData.map(data => 
-        <div className = 'data-list-item'>
+        <ListContainer>
               <h2>{data.country.toUpperCase()}</h2>
               <div className = 'data'>
                 <h3>Todays Cases: <span>{data.todayCases.toLocaleString()} |</span> </h3>
@@ -20,7 +22,7 @@ const DataList = ({ filteredData }) => {
                 <h3>Total Cases: <span>{data.cases.toLocaleString()} |</span></h3> 
                 <h3>Deaths: <span>{data.deaths.toLocaleString()}</span></h3>
               </div>
-        </div>            
+        </ListContainer>            
             )}
     </Fragment>
     )

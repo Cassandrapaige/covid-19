@@ -1,0 +1,14 @@
+.container {
+    margin-top: 130px;
+    margin-bottom: 100px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+
+    .search-feature {
+        grid-column: 1/-1;
+    }
+    
+    @media screen and (max-width: 800px) {
+        grid-template-columns: 1fr;
+    }
+}

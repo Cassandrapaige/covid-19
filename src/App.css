@@ -4,6 +4,7 @@
 
 body {
     background: #171717;
+    scroll-behavior: smooth;
 }
 
 a {

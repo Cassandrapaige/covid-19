@@ -12,7 +12,7 @@ const Navbar = () => {
                         <i className='fas fa-chart-line'></i>Stats
                     </li>
                 </Link>
-                <Link to ='/'>
+                <Link to ='/news'>
                     <li className='nav-list-item'>
                         <i className='far fa-newspaper'/>News
                     </li>

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
-import './statistics-page.styles.scss'
 import DataList from '../../components/data-list/data-list.component'
 import SearchFeature from '../../components/search-feature/search-feature.component'
+import Container from '../../components/container/container.component'
 
 const StatisticsPage = () => {
     const [url, setUrl] = useState('https://coronavirus-19-api.herokuapp.com/countries');
@@ -25,10 +25,10 @@ const StatisticsPage = () => {
       }
 
     return (
-        <div className = 'data-container'>
+        <Container>
             <SearchFeature placeholder = '&#xF002; Search by country' handleChange = {handleChange} />
             <DataList filteredData = {filteredData} />
-        </div>
+        </Container>
     )
 }
 
