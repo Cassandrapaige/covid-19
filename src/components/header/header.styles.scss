@@ -1,0 +1,15 @@
+header {
+    background: #191919;
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    color: #fff;
+    line-height: 20px;
+    padding: 10px 20px;
+    box-shadow: 0 3px 6px rgba(19, 19, 19, .3);
+
+    span {
+        font-weight: 200;
+        color: red;
+    }
+}
