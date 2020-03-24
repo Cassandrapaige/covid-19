@@ -5,10 +5,11 @@ import './data-list.styles.scss'
 import ListContainer from '../list-container/list-container.component'
 
 const DataList = ({ filteredData }) => {
+
     return (
     <Fragment>
-        {filteredData.map(data => 
-        <ListContainer>
+        {filteredData.map((data, index) => 
+        <ListContainer key = {index}>
               <h2>{data.country.toUpperCase()}</h2>
               <div className = 'data'>
                 <h3>Todays Cases: <span>{data.todayCases.toLocaleString()} |</span> </h3>

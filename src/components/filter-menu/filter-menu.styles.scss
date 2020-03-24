@@ -1,0 +1,40 @@
+.dropdown-filter-menu-btn {
+    position: absolute;
+    right: 20px;
+    top: 0px;
+
+    .fas {
+        font-size: 30px;
+        color: #fff;
+        background: #141414;
+        padding: 10px;
+    }
+}
+
+.dropdown-filter-menu-list {
+    background: #141414;
+    width: 300px;
+    padding: 30px;
+    list-style-type: none;
+    position: absolute;
+    right: 20px;
+    top: 50px;
+    box-shadow: 0 3px 6px rgba(19, 19, 19, .4);
+
+    li {
+        color: #eee;
+        padding: 6px 0;
+        border-bottom: 1px solid #333;
+        font-size: 18px;
+        cursor: pointer;
+
+        &:hover {
+            padding: 7px 0;
+        }
+    }
+
+    @media screen and (max-width: 400px) {
+        width: 100%;
+        right: 0;
+    }
+}

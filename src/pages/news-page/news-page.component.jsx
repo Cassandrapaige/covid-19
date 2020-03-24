@@ -18,10 +18,10 @@ const NewsPage = () => {
       .catch(error => console.log(error))
     }, [url]);
 
+    
     const handleClick = () => {
         setCount(count + 20)
         setUrl(`http://newsapi.org/v2/everything?q=covid&from=2020-03-24&sortBy=popularity&language=en&pageSize=${count + 20}&apiKey=4792a2b1fc8446f094c1d461b6330502`);
-        console.log(count)
     }
 
     const scrollToTop = () => {

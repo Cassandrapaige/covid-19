@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 import './header.styles.scss'
 
 const Header = () => {
-    const [url, setUrl] = useState('https://coronavirus-19-api.herokuapp.com/countries');
     const [data, setData] = useState([]);
-    const [searchField, setSearchField] = useState('');
   
     useEffect(() => {
-      axios.get(url)
+      axios.get('https://coronavirus-19-api.herokuapp.com/countries')
       .then(result => {setData(result.data)})
       .catch(error => console.log(error))
     }, []);
@@ -29,7 +28,7 @@ const Header = () => {
 
     return (
         <header>
-            <h1>Covid-19</h1>
+            <Link to = '/'><h1>Covid-19</h1></Link>
             <h3>Total deaths: <span>{totalDeaths}</span>   |   Today: <span>{totalDeathsToday}</span></h3>
         </header>
     )
