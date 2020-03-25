@@ -10,13 +10,12 @@ import Spinner from '../../components/spinner/spinner.component'
 
 const NewsPage = () => {
     const [count, setCount] = useState(20);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [url, setUrl] = useState(
     `https://newsapi.org/v2/everything?q=covid&from=2020-03-24&sortBy=popularity&language=en&pageSize=${count}&apiKey=${API_KEY}`);
     const [data, setData] = useState([]);
   
     useEffect(() => {
-        setIsLoading(true);
         axios.get(url)
         .then(result => {
             setData(result.data.articles)
@@ -41,13 +40,13 @@ const NewsPage = () => {
             { isLoading ? 
                 <Spinner /> 
                 :
-
+                <>
                 <NewsList data = {data} />
-            }
                 <button onClick = { count <= 80 ? handleClick : scrollToTop}> 
                     { count <= 80 ? 'See more' : 'Go to top' }
                 </button>
-
+                </>
+            }
         </Container>
     )
 }

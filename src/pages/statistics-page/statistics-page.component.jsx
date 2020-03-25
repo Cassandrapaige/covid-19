@@ -45,7 +45,7 @@ const StatisticsPage = () => {
 
     const filteredList = event => {
         let type = event.target.dataset.type;
-        setData(filteredData.sort(sortByType(`${type}`, parseInt)))
+        setData(data.sort(sortByType(`${type}`, parseInt)))
         setIsActive(!isActive);
     }
 
