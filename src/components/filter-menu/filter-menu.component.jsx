@@ -8,7 +8,7 @@ const FilterMenu = ({ filteredData, active, handleClick, onClick }) => {
     return (
         <div className = 'dropdown-filter-menu'>
             <div className = 'dropdown-filter-menu-btn' onClick = {handleClick}>
-                <i class="fas fa-sort-amount-down"></i>
+                <i className="fas fa-sort-amount-down"></i>
             </div>
             { active ? 
                 <ul className = 'dropdown-filter-menu-list'>
