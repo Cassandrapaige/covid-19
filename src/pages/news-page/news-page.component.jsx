@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios'
 
 import './news-page.styles.scss'
@@ -10,12 +10,21 @@ import Spinner from '../../components/spinner/spinner.component'
 
 const NewsPage = () => {
     const [count, setCount] = useState(20);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
+
+    // GET TODAYS DATE FOR RELEVANT API DATA
+    let today = new Date();
+    const dd = String(today.getDate() - 7).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    today = `${yyyy}-${mm}-${dd}`;
+
     const [url, setUrl] = useState(
-    `https://newsapi.org/v2/everything?q=covid&from=2020-03-24&sortBy=popularity&language=en&pageSize=${count}&apiKey=${API_KEY}`);
+    `https://newsapi.org/v2/everything?q=covid&from=${today}&sortBy=relevance&language=en&pageSize=${count}&apiKey=${API_KEY}`);
     const [data, setData] = useState([]);
   
     useEffect(() => {
+        setIsLoading(true);
         axios.get(url)
         .then(result => {
             setData(result.data.articles)
@@ -24,10 +33,9 @@ const NewsPage = () => {
         .catch(error => console.log(error))
     }, [url]);
 
-    
     const handleClick = () => {
         setCount(count + 20)
-        setUrl(`https://newsapi.org/v2/everything?q=covid&from=2020-03-24&sortBy=popularity&language=en&pageSize=${count + 20}&apiKey=${API_KEY}`);
+        setUrl(`https://newsapi.org/v2/everything?q=covid&from=${today}&sortBy=relevance&language=en&pageSize=${count + 20}&apiKey=${API_KEY}`);
     }
 
     const scrollToTop = () => {
@@ -40,12 +48,12 @@ const NewsPage = () => {
             { isLoading ? 
                 <Spinner /> 
                 :
-                <>
-                <NewsList data = {data} />
-                <button onClick = { count <= 80 ? handleClick : scrollToTop}> 
-                    { count <= 80 ? 'See more' : 'Go to top' }
-                </button>
-                </>
+                <Fragment>
+                    <NewsList data = {data} />
+                    <button onClick = { count <= 80 ? handleClick : scrollToTop}> 
+                        { count <= 80 ? 'See more' : 'Go to top' }
+                    </button>
+                </Fragment>
             }
         </Container>
     )

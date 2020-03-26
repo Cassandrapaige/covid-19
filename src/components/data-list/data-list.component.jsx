@@ -10,7 +10,7 @@ const DataList = ({ filteredData }) => {
     <Fragment>
         {filteredData.map((data, index) => 
         <ListContainer key = {index}>
-              <h2>{data.country.toUpperCase()}</h2>
+            <h2>{data.country.toUpperCase()}</h2>
               <div className = 'data'>
                 <h3>Todays Cases: <span>{data.todayCases.toLocaleString()} |</span> </h3>
                 <h3>Deaths: <span>{data.todayDeaths.toLocaleString()}</span></h3>

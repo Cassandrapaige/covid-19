@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 import './filter-menu.styles.scss'
 
-const FilterMenu = ({ filteredData, active, handleClick, onClick }) => {
+const FilterMenu = ({ active, handleClick, onClick }) => {
 
 
     return (
