@@ -12,7 +12,7 @@ const NewsPage = () => {
     const [count, setCount] = useState(20);
     const [isLoading, setIsLoading] = useState(false);
 
-    // GET TODAYS DATE FOR RELEVANT API DATA
+    // GET TODAYS DATE (MINUS ONE WEEK) FOR RELEVANT API DATA
     let today = new Date();
     const dd = String(today.getDate() - 7).padStart(2, '0');
     const mm = String(today.getMonth() + 1).padStart(2, '0');
