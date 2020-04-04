@@ -28,6 +28,8 @@ const StatisticsPage = () => {
         el.country.toLowerCase().includes(searchField.toLowerCase())
     )
 
+    console.log(data)
+
     const handleChange = event => {
         setSearchField(event.target.value)
     }

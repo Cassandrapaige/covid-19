@@ -13,8 +13,8 @@ const Header = () => {
       .catch(error => console.log(error))
     }, []);
   
-    const calculateTotalResults = (array) => {
-      const results = array.reduce((total, num) => total + num, 0);
+      const calculateTotalResults = (array) => {
+      const results = array.slice(1).reduce((total, num) => total + num, 0);
       return results.toLocaleString();
     }
   
