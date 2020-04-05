@@ -15,7 +15,7 @@ const Header = () => {
   
       const calculateTotalResults = (array) => {
       const results = array.slice(1).reduce((total, num) => total + num, 0);
-      return results.toLocaleString();
+      return results;
     }
   
       // CALCULATE TOTAL DEATHS TODAY
