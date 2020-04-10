@@ -12,24 +12,16 @@ const Header = () => {
       .then(result => {setData(result.data)})
       .catch(error => console.log(error))
     }, []);
-  
-      const calculateTotalResults = (array) => {
-      const results = array.slice(1).reduce((total, num) => total + num, 0);
-      return results;
-    }
-  
-      // CALCULATE TOTAL DEATHS TODAY
-      const deathsToday = data.map(el => el.todayDeaths);
-      const totalDeathsToday = calculateTotalResults(deathsToday);
-  
-      // CALCULATE TOTAL DEATHS
-      const deaths = data.map(el => el.deaths);
-      const totalDeaths = calculateTotalResults(deaths);
+
+    const worldData = data.filter(e => e.country === "World");
+    const totalDeaths = worldData.map(x => x.deaths).toLocaleString();
+    const todayDeaths = worldData.map(x => x.todayDeaths).toLocaleString();
 
     return (
         <header>
             <Link to = '/'><h1>Covid-19</h1></Link>
-            <h3>Total deaths: <span>{totalDeaths}</span>   |   Today: <span>{totalDeathsToday}</span></h3>
+            <h3>Total deaths: <span> {totalDeaths}</span>   |   
+            Today: <span> {todayDeaths} </span></h3>
         </header>
     )
 }
