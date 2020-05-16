@@ -16,7 +16,7 @@ const DataList = ({ filteredData }) => {
                 <h3>Deaths: <span>{data.todayDeaths.toLocaleString()}</span></h3>
               </div>
               <div className = 'data'>
-                <h3>Active Cases: <span>{data.active.toLocaleString()} |</span> </h3>
+                <h3>Active Cases: <span>{data.active !== null ? data.active.toLocaleString() : '--'} |</span> </h3>
                 <h3>Critical: <span>{data.critical.toLocaleString()}</span></h3>
               </div>
               <div className = 'data'>
@@ -24,7 +24,7 @@ const DataList = ({ filteredData }) => {
                 <h3>Deaths: <span>{data.deaths.toLocaleString()}</span></h3>
             </div>
         </ListContainer>            
-            )}
+        )}
     </Fragment>
     )
 }

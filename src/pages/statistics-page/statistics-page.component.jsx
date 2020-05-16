@@ -55,7 +55,6 @@ const StatisticsPage = () => {
         <Container> 
             <SearchFeature placeholder = '&#xF002; Search by country' handleChange = {handleChange}>
                 <FilterMenu 
-                    filteredData = {filteredData} 
                     active = {isActive}
                     handleClick = {handleClick}
                     onClick = {filteredList}
