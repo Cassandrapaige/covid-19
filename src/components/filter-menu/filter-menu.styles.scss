@@ -1,7 +1,8 @@
 .dropdown-filter-menu-btn {
     position: absolute;
     right: 20px;
-    top: 0px;
+    top: 50%;
+    transform: translateY(-50%);
 
     .fas {
         font-size: 30px;
