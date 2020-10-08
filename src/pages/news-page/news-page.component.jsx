@@ -19,23 +19,21 @@ const NewsPage = () => {
     const yyyy = today.getFullYear();
     today = `${yyyy}-${mm}-${dd}`;
 
-    const [url, setUrl] = useState(
-    `https://newsapi.org/v2/everything?q=covid&from=${today}&sortBy=relevance&language=en&pageSize=${count}&apiKey=${API_KEY}`);
+    const [url, setUrl] = useState(`https://newsapi.org/v2/everything?q=covid&from=${today}&sortBy=relevance&language=en`);
     const [data, setData] = useState([]);
   
     useEffect(() => {
         setIsLoading(true);
-        axios.get(url)
+        axios.get(`${url}&pageSize=${count}&apiKey=${API_KEY}`)
         .then(result => {
             setData(result.data.articles)
             setIsLoading(false)
             })
         .catch(error => console.log(error))
-    }, [url]);
+    }, [count]);
 
     const handleClick = () => {
         setCount(count + 20)
-        setUrl(`https://newsapi.org/v2/everything?q=covid&from=${today}&sortBy=relevance&language=en&pageSize=${count + 20}&apiKey=${API_KEY}`);
     }
 
     const scrollToTop = () => {

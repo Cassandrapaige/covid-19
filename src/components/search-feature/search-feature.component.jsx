@@ -1,11 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import './search-feature.styles.scss'
 
-const SearchFeature = ({placeholder, handleChange, children}) => {
+const SearchFeature = ({placeholder, handleChange, children, inputRef}) => {
     return (
          <div className="search-feature">
-            <input type="text" onChange = {handleChange} placeholder = {placeholder}/>
+            <input 
+                type="text" 
+                onChange = {handleChange} 
+                placeholder = {placeholder}
+                ref = {inputRef}
+            />
             {children}
         </div>
     )

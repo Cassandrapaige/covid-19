@@ -11,6 +11,8 @@ const NewsList = ({ data }) => {
         window >= 1200 ?
             window.removeEventListener('resize', getWindowWidth)
             : window.addEventListener('resize', getWindowWidth)
+
+        return () => window.removeEventListener('resize', getWindowWidth);
     },[]);
 
     const getWindowWidth = () => {
@@ -20,8 +22,7 @@ const NewsList = ({ data }) => {
     return (
     <Fragment>
         {data.map((data, index) => 
-        <a 
-            href ={data.url} 
+        <a href ={data.url} 
             target='_blank' 
             rel="noopener noreferrer" 
             key = {index}>
@@ -29,12 +30,11 @@ const NewsList = ({ data }) => {
                 <div className="article">
                     <div className="content">
                         <h2>{data.title}</h2>
-                        { width >= 1200 ? 
+                        { width >= 1200 &&
                             <p>{data.description}</p>
-                            : ''
                         }
                     </div>
-                <img src={data.urlToImage} alt=""/>
+                    <img src={data.urlToImage} alt={data.title}/>
                 </div>
             </ListContainer> 
         </a>

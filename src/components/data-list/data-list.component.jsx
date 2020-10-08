@@ -10,8 +10,7 @@ const DataList = ({ filteredData }) => {
     <Fragment>
         {filteredData.map((data, index) => {
           const getData = keyword => {
-            if(data !== null)
-            {
+            if(data !== null) {
               try {
                 return data[keyword].toLocaleString()
               }
@@ -35,7 +34,7 @@ const DataList = ({ filteredData }) => {
               <div className = 'data'>
                 <h3>Total Cases: <span>{getData('cases')} |</span></h3> 
                 <h3>Deaths: <span>{getData('deaths')}</span></h3>
-            </div>
+              </div>
           </ListContainer>    
           )
         }        

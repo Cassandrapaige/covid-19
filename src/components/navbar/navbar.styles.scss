@@ -3,6 +3,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+    padding: 20px 0;
 
     &-list {
         display: grid;
@@ -18,7 +19,7 @@
             background: #333;
             box-shadow: 0 6px 6px rgba(19, 19, 19, .6);
             padding: 10px;
-            width: 90%;
+            width: 98%;
             margin: auto;
             cursor: pointer;
 

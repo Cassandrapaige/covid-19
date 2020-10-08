@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios'
 
 import DataList from '../../components/data-list/data-list.component'
@@ -13,22 +13,22 @@ const StatisticsPage = () => {
     const [isActive, setIsActive] = useState(false);
     const [showNav, setShowNav] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const inputRef = useRef(null);
   
     useEffect(() => {
         setIsLoading(true);
-      axios.get('https://coronavirus-19-api.herokuapp.com/countries')
-      .then(result => {
-          setData(result.data);
-          setIsLoading(false);
-        })
+        inputRef.current.focus();
+        axios.get('https://coronavirus-19-api.herokuapp.com/countries')
+        .then(result => {
+            setData(result.data);
+            setIsLoading(false);
+         })
       .catch(error => console.log(error))
     }, []);
 
     const filteredData = data.filter(el => 
         el.country.toLowerCase().includes(searchField.toLowerCase())
     )
-
-    console.log(data)
 
     const handleChange = event => {
         setSearchField(event.target.value)
@@ -46,14 +46,18 @@ const StatisticsPage = () => {
     }
 
     const filteredList = event => {
-        let type = event.target.dataset.type;
+        const {type} = event.target.dataset;
         setData(data.sort(sortByType(`${type}`, parseInt)))
         setIsActive(!isActive);
     }
 
     return (
         <Container> 
-            <SearchFeature placeholder = '&#xF002; Search by country' handleChange = {handleChange}>
+            <SearchFeature 
+                placeholder = '&#xF002; Search by country' 
+                handleChange = {handleChange}
+                inputRef = {inputRef}>
+
                 <FilterMenu 
                     active = {isActive}
                     handleClick = {handleClick}
