@@ -7,10 +7,13 @@ import {API_KEY} from '../../base'
 import NewsList from '../../components/news-list/news-list.component'
 import Container from '../../components/container/container.component'
 import Spinner from '../../components/spinner/spinner.component'
+import Pagination from '../../components/pagination/pagination.component';
 
 const NewsPage = () => {
-    const [count, setCount] = useState(20);
-    const [isLoading, setIsLoading] = useState(false);
+    const [page, setPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(true);
+    const [data, setData] = useState([]);
+    const baseurl = "https://content.guardianapis.com/";
 
     // GET TODAYS DATE (MINUS ONE WEEK) FOR RELEVANT API DATA
     let today = new Date();
@@ -19,41 +22,32 @@ const NewsPage = () => {
     const yyyy = today.getFullYear();
     today = `${yyyy}-${mm}-${dd}`;
 
-    const [url, setUrl] = useState(`https://newsapi.org/v2/everything?q=covid&from=${today}&sortBy=relevance&language=en`);
-    const [data, setData] = useState([]);
-  
-    useEffect(() => {
-        setIsLoading(true);
-        axios.get(`${url}&pageSize=${count}&apiKey=${API_KEY}`)
-        .then(result => {
-            setData(result.data.articles)
-            setIsLoading(false)
-            })
-        .catch(error => console.log(error))
-    }, [count]);
-
-    const handleClick = () => {
-        setCount(count + 20)
-    }
-
-    const scrollToTop = () => {
+    const handleClick = event => { 
+        setPage(event.target.dataset.page);
         window.scrollTo(0, 0);
     }
 
+    const fetchResults = async (url) => {
+        const results = await axios.get(url);
+        setData(results.data.response.results);
+        setIsLoading(false);
+    }
+
+    useEffect(() => {
+        setIsLoading(true);
+        fetchResults(`${baseurl}search?q=covid&page=${page}&page-size=20&from-date=${today}&show-fields=bodyText&api-key=${API_KEY}`)
+        .catch(error => console.log(error));
+    }, [page]);
+
     return (
-        <Container>
-            <h2 className = 'title'>Latest News | Top 100</h2>
-            { isLoading ? 
-                <Spinner /> 
-                :
-                <Fragment>
-                    <NewsList data = {data} />
-                    <button onClick = { count <= 80 ? handleClick : scrollToTop}> 
-                        { count <= 80 ? 'See more' : 'Go to top' }
-                    </button>
-                </Fragment>
-            }
-        </Container>
+            isLoading ? 
+            <Spinner /> 
+            :
+            <Container>
+                <h2 className = 'title'>Latest News | Top 100</h2>
+                <NewsList data = {data} />
+                <Pagination handleClick = {handleClick} page = {page}/>
+            </Container>
     )
 }
 

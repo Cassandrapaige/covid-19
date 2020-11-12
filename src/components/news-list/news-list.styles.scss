@@ -1,43 +1,16 @@
 .article {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 100%;
+    line-height: 150%;
 
-    .content {
-        padding-right: 15px;
-
-        h2 {
-            font-size: 18px;
-            line-height: 25px;
-        }
-
-        p {
-            line-height: 24px;
-        }
-    }
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    h3 {
+        margin-bottom: 10px;
     }
 
-    @media screen and (max-width: 1200px) {
-        .content {
-            h2 {
-                font-size: 16px;
-                font-weight: 500;
-            }
-
-        }
+    span {
+        background: #ff0000;
     }
 
-    @media screen and (max-width: 400px) {
-        .content {
-            h2 {
-                font-size: 13px;
-                font-weight: 500;
-            }
-
-        }
+    p {
+        font-weight: 200;
+        padding: 10px 0;
     }
 }

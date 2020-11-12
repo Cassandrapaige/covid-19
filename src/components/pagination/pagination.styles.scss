@@ -1,0 +1,26 @@
+.pagination {
+    margin: auto;
+    grid-column: 1/-1;
+
+    button {
+        grid-column: 1/-1;
+        padding: 25px;
+        font-size: 18px;
+        background: #141414;
+        color: #fff;
+        border: none;
+        outline: none;
+        margin: 20px 0;
+        margin: 2px;
+        padding: 20px;
+        cursor: pointer;
+
+        &:hover:not(.active) {
+            background: #222222;
+        }
+    }
+
+    .active {
+        background: #ff0000;
+    }
+}

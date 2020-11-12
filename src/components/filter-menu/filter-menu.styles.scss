@@ -1,9 +1,9 @@
 .dropdown-filter-menu-btn {
+    cursor: pointer;
     position: absolute;
-    right: 20px;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
-    cursor: pointer;
 
     .fas {
         font-size: 30px;
@@ -19,7 +19,7 @@
     padding: 30px;
     list-style-type: none;
     position: absolute;
-    right: 20px;
+    right: 0px;
     top: 75px;
     box-shadow: 0 3px 6px rgba(19, 19, 19, .4);
 
@@ -31,12 +31,11 @@
         cursor: pointer;
 
         &:hover {
-            padding: 7px 0;
+            background: #222222;
         }
     }
 
     @media screen and (max-width: 400px) {
         width: 100%;
-        right: 0;
     }
 }

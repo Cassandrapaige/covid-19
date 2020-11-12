@@ -24,16 +24,16 @@ const DataList = ({ filteredData }) => {
           <ListContainer key = {index}>
             <h2>{data.country.toUpperCase()}</h2>
               <div className = 'data'>
-                <h3>Todays Cases: <span>{getData('todayCases')} |</span> </h3>
-                <h3>Deaths: <span>{getData('todayDeaths')}</span></h3>
+                <p>Todays Cases: <span>{getData('todayCases')} |</span> </p>
+                <p>Deaths: <span>{getData('todayDeaths')}</span></p>
               </div>
               <div className = 'data'>
-                <h3>Active Cases: <span>{getData('active')} |</span> </h3>
-                <h3>Critical: <span>{getData('critical')}</span></h3>
+                <p>Active Cases: <span>{getData('active')} |</span> </p>
+                <p>Critical: <span>{getData('critical')}</span></p>
               </div>
               <div className = 'data'>
-                <h3>Total Cases: <span>{getData('cases')} |</span></h3> 
-                <h3>Deaths: <span>{getData('deaths')}</span></h3>
+                <p>Total Cases: <span>{getData('cases')} |</span></p> 
+                <p>Deaths: <span>{getData('deaths')}</span></p>
               </div>
           </ListContainer>    
           )

@@ -7,11 +7,12 @@ import Container from '../../components/container/container.component'
 import FilterMenu from '../../components/filter-menu/filter-menu.component'
 import Spinner from '../../components/spinner/spinner.component'
 
+import './statistics-page.styles.scss'
+
 const StatisticsPage = () => {
     const [data, setData] = useState([]);
     const [searchField, setSearchField] = useState('');
     const [isActive, setIsActive] = useState(false);
-    const [showNav, setShowNav] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const inputRef = useRef(null);
   
@@ -51,6 +52,8 @@ const StatisticsPage = () => {
         setIsActive(!isActive);
     }
 
+    const message = "Whoops! Nothing matches your query. Make sure you're spelling it correctly and try again."
+
     return (
         <Container> 
             <SearchFeature 
@@ -64,10 +67,9 @@ const StatisticsPage = () => {
                     onClick = {filteredList}
                 />
             </SearchFeature>
-            {isLoading ?
-                <Spinner />
-                :
-                <DataList filteredData = {filteredData} />
+            {isLoading ? <Spinner />
+                : filteredData.length === 0 ? <div className="warning-message">{message}</div>
+                : <DataList filteredData = {filteredData} />   
             }
         </Container>
     )

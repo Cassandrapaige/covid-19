@@ -1,5 +1,7 @@
 .search-feature {
   position: relative;
+  display: flex;
+  justify-content: space-between;
 
     input {
       background: #161616;
