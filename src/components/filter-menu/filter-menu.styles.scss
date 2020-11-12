@@ -1,37 +1,43 @@
 .dropdown-filter-menu-btn {
     cursor: pointer;
     position: absolute;
-    right: 0;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
 
     .fas {
         font-size: 30px;
-        color: #fff;
-        background: #141414;
+        color: var(--text);
+        background: var(--secondary);
         padding: 10px;
     }
 }
 
 .dropdown-filter-menu-list {
-    background: #141414;
+    background: var(--secondary);
     width: 300px;
     padding: 30px;
     list-style-type: none;
     position: absolute;
     right: 0px;
     top: 75px;
-    box-shadow: 0 3px 6px rgba(19, 19, 19, .4);
+    box-shadow: 0 6px 12px rgba(19, 19, 19, .4);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; 
 
     li {
-        color: #eee;
+        color: var(--text);
         padding: 6px 0;
-        border-bottom: 1px solid #333;
+        border-bottom: 1px solid var(--grey);
         font-size: 18px;
         cursor: pointer;
 
         &:hover {
-            background: #222222;
+            background: var(--grey);
         }
     }
 

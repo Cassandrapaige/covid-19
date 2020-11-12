@@ -11,7 +11,7 @@ import Pagination from '../../components/pagination/pagination.component';
 
 const NewsPage = () => {
     const [page, setPage] = useState(1);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState([]);
     const baseurl = "https://content.guardianapis.com/";
 
@@ -24,7 +24,6 @@ const NewsPage = () => {
 
     const handleClick = event => { 
         setPage(event.target.dataset.page);
-        window.scrollTo(0, 0);
     }
 
     const fetchResults = async (url) => {
@@ -35,19 +34,20 @@ const NewsPage = () => {
 
     useEffect(() => {
         setIsLoading(true);
+        window.scrollTo(0, 0);
         fetchResults(`${baseurl}search?q=covid&page=${page}&page-size=20&from-date=${today}&show-fields=bodyText&api-key=${API_KEY}`)
         .catch(error => console.log(error));
     }, [page]);
 
     return (
-            isLoading ? 
-            <Spinner /> 
-            :
+            !isLoading && data.length > 0 ? 
             <Container>
                 <h2 className = 'title'>Latest News | Top 100</h2>
                 <NewsList data = {data} />
                 <Pagination handleClick = {handleClick} page = {page}/>
             </Container>
+            :
+            <Spinner />
     )
 }
 

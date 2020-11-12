@@ -1,5 +1,5 @@
 .nav {
-    background: #191919;
+    background: var(--secondary);
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -16,7 +16,7 @@
             flex-direction: column;
             align-items: center;
             font-size: 20px;
-            background: #333;
+            background:var(--grey);
             box-shadow: 0 6px 6px rgba(19, 19, 19, .6);
             padding: 10px;
             width: 98%;

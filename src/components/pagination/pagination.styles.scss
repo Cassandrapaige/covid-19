@@ -6,8 +6,8 @@
         grid-column: 1/-1;
         padding: 25px;
         font-size: 18px;
-        background: #141414;
-        color: #fff;
+        background: var(--secondary);
+        color: var(--text);
         border: none;
         outline: none;
         margin: 20px 0;
@@ -16,11 +16,11 @@
         cursor: pointer;
 
         &:hover:not(.active) {
-            background: #222222;
+            background: var(--grey);
         }
     }
 
     .active {
-        background: #ff0000;
+        background: var(--accent);
     }
 }

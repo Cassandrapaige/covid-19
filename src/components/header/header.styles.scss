@@ -1,9 +1,9 @@
 header {
-    background: #191919;
+    background: var(--secondary);
     position: sticky; 
     top: 0;
     width: 100%;
-    color: #fff;
+    color: var(--text);
     line-height: 42px;
     padding: 18px;
     box-shadow: 0 3px 6px rgba(19, 19, 19, .3);
@@ -11,7 +11,7 @@ header {
 
     span {
         font-weight: 200;
-        color: #ff0000;
+        color: var(--accent);
     }
 
     @media screen and (max-width: 400px) {

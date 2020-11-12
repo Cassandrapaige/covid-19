@@ -1,0 +1,32 @@
+.list-item {
+    background: var(--grey);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--text);
+    height: 100%;
+
+    &-title {
+        margin-bottom: 10px;
+        line-height: 140%;
+    }
+
+    &-tag {
+        background: var(--accent);
+        font-size: 18px;
+    }
+
+    &-substring {
+        font-weight: 200;
+        padding: 10px 0;
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    @media screen and (max-width: 600px) {
+        padding: 10px;
+        
+        &-title {
+            font-size: 18px;
+        }
+    }
+}

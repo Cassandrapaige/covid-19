@@ -2,23 +2,21 @@ import React, {Fragment, useState, useEffect} from 'react'
 
 import './news-list.styles.scss'
 
-import ListContainer from '../list-container/list-container.component'
+import ListItem from '../list-item/list-item.component'
 
 const NewsList = ({ data }) => {    
     return (
     <Fragment>
         {data.map((data, index) => 
-            <ListContainer>
-                <div className="article" key = {index}>
-                    <a href ={data.webUrl} 
-                        target='_blank' 
-                        rel="noopener noreferrer"> 
-                        <h3>{data.webTitle}</h3>
-                        <span>{data.sectionName}</span>
-                        <p>{data.fields.bodyText.substr(0, 200)}...</p>
-                    </a>
-                </div>
-            </ListContainer> 
+            <ListItem key = {index}>
+                <a href ={data.webUrl} 
+                    target='_blank' 
+                    rel="noopener noreferrer"> 
+                    <h2 className = 'list-item-title'>{data.webTitle}</h2>
+                    <span className = 'list-item-tag'>{data.sectionName}</span>
+                    <p className = 'list-item-substring'>{data.fields.bodyText.substr(0, 200)}...</p>
+                </a>
+            </ListItem> 
         )}
     </Fragment>
     )

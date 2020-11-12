@@ -4,13 +4,21 @@
     padding: 0;
 }
 
+:root {
+    --text: #fff;
+    --grey: #222222;
+    --accent: #ff0000;
+    --secondary: #191919;
+    --primary: #171717;
+}
+
 body {
-    background: #171717;
+    background: var(--primary);
     scroll-behavior: smooth;
-    color: #fff;
+    color: var(--text);
 }
 
 a {
-    color: #fff;
+    color: var(--text);
     text-decoration: none;
 }
