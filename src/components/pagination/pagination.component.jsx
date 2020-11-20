@@ -8,16 +8,16 @@ const PaginationLink = ({handleClick, num, page}) => (
     </button>
 )
 
-const Pagination = ({...rest}) => {
+const Pagination = ({totalPages, ...rest}) => {
     let links = [];
 
-    for(let i = 1; i <= 5; i++) {
-        links.push(<PaginationLink num = {i} {...rest}/>)
+    for(let i = 1; i <= totalPages; i++) {
+        links.push(<PaginationLink key = {i} num = {i} {...rest}/>)
     }
 
     return (
         <div className="pagination">
-            {links}
+            {totalPages <= 5 ? links : links.slice(0, 5)}
         </div>
     )
 }

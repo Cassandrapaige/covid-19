@@ -13,6 +13,8 @@ const NewsPage = () => {
     const [page, setPage] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState([]);
+    const [totalPages, setTotalPages] = useState(0);
+    const [totalResults, setTotalResults] = useState(0);
     const baseurl = "https://content.guardianapis.com/";
 
     // GET TODAYS DATE (MINUS ONE WEEK) FOR RELEVANT API DATA
@@ -27,11 +29,15 @@ const NewsPage = () => {
     }
 
     const fetchResults = async (url) => {
-        const results = await axios.get(url);
-        setData(results.data.response.results);
+        const response = await axios.get(url);
+        console.log(response);
+        const result = await response.data.response;
+        setData(result.results);
+        setTotalPages(result.pages);
+        setTotalResults(result.total);
         setIsLoading(false);
     }
-
+    
     useEffect(() => {
         setIsLoading(true);
         window.scrollTo(0, 0);
@@ -42,9 +48,9 @@ const NewsPage = () => {
     return (
             !isLoading && data.length > 0 ? 
             <Container>
-                <h2 className = 'title'>Latest News | Top 100</h2>
+                <h2 className = 'title'>Latest News | Top {totalResults <= 100 ? totalResults : 100}</h2>
                 <NewsList data = {data} />
-                <Pagination handleClick = {handleClick} page = {page}/>
+                <Pagination handleClick = {handleClick} page = {page} totalPages = {totalPages}/>
             </Container>
             :
             <Spinner />
