@@ -10,7 +10,6 @@ import StatisticsPage from './pages/statistics-page/statistics-page.component'
 import NewsPage from './pages/news-page/news-page.component'
 
 function App() {
-
   return (
     <div className="App">
       <Header />

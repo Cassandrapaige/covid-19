@@ -10,7 +10,7 @@ const DataList = ({ filteredData }) => {
     <Fragment>
         {filteredData.map((data, index) => {
           const getData = keyword => {
-            if(data !== null) {
+            if(data !== null || data !== undefined) {
               try {
                 return data[keyword].toLocaleString()
               }

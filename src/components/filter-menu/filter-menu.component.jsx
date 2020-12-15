@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 import './filter-menu.styles.scss'
 
@@ -12,7 +12,7 @@ const FilterMenu = ({ active, handleClick, onClick }) => {
             <ul className = 'dropdown-filter-menu-list'>
                 {
                     FILTER_MENU_DATA.map((item, index) => (
-                        <li onClick = {onClick} data-type = {item.type}>{item.text}</li>
+                        <li onClick = {onClick} data-type = {item.type} key = {index}>{item.text}</li>
                     ))
                 }
             </ul>

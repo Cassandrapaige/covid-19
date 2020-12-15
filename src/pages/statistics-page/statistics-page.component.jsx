@@ -54,6 +54,10 @@ const StatisticsPage = () => {
 
     const message = "Whoops! Nothing matches your query. Make sure you're spelling it correctly and try again."
 
+    const renderPageWithSpinner = Component => (
+        !isLoading && data.length > 0 ? <Component /> : <Spinner/>
+     )
+    
     return (
         <Container> 
             <SearchFeature 
@@ -67,10 +71,12 @@ const StatisticsPage = () => {
                     onClick = {filteredList}
                 />
             </SearchFeature>
-            {isLoading ? <Spinner />
-                : filteredData.length === 0 ? <div className="warning-message">{message}</div>
-                : <DataList filteredData = {filteredData} />   
-            }
+
+            {renderPageWithSpinner(() => (
+                filteredData.length === 0 ? <div className="warning-message">{message}</div>
+                : <DataList filteredData = {filteredData} /> 
+            ))}
+            
         </Container>
     )
 }
